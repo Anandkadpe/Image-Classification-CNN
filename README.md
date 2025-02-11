@@ -1,1 +1,2 @@
-# German-Traffic-Signs-CNN
+# Image Classification CNN 
+
