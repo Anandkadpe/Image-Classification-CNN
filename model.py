@@ -1,3 +1,4 @@
+import torch
 from torch import nn
 import torch.nn.functional as F
 
@@ -45,6 +46,14 @@ class TrafficSigCNN(nn.Module):
     x = self.classifier(x)
     return x
 
-model = TrafficSigCNN(num_classes= 43)
+def train_model():
+    model = TrafficSigCNN(num_classes= 43)
+    return model
+    
 criterion = nn.CrossEntropyLoss()
+model = train_model()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+
+# set the device
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = model.to(device)
